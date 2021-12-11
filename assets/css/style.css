@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: #F9C847;
+    --secondaryColor: #000000;
+    --tertiaryColor: #ffffff;
+}
