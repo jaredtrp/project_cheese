@@ -32,20 +32,47 @@ const cheeses = [
 var printCheeseCards = function() {
     for(var i = 0; i < cheeses.length; i++) {
         console.log("card# " + cheeses[i]);
-        var taskdiv = $("<div>").addClass("taskdiv")
-            // .append("#container");
-        var image = $("<img>").addClass("image");
-            // .append("#container");
+        var taskdiv = $("<div>")
+            .addClass("taskdiv");
+
+        var image = $("<img>")
+            .addClass(cheeses[i].img);
+
         var cheeseName = $("<h2>")
             .addClass("cheese-name")
             .text(cheeses[i].name);
-            // .append("#container");
+        
+        var cutBtn = $("<button/>")
+            .addClass("cutBtn")
+            .text('CUT IT')
+            .click(function () {
+                
+            });
+            
+
+        
         container.append(taskdiv);
         container.append(image);
         container.append(cheeseName);
+        container.append(cutBtn);
     };      
             
 };
+
+var cheeseCard = function() {};
+
+// $('<button/>')
+//     .text('Test')
+//     .click(function () { alert('hi'); });
+
+// // or
+
+// $('<button>Test</button>').click(function () { alert('hi'); });
+
+
+
+
+
 // var createTask = function(taskText, taskDate, taskList) {
 //     create elements that make up a task item
 //     var taskLi = $("<li>").addClass("list-group-item");

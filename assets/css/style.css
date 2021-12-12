@@ -4,3 +4,10 @@
     --hole-color: #F0AC4D;
     --tertiary: #FFFFFF;
 }
+
+#container {
+    background-color: #F0AC4D;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
