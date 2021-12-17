@@ -1,9 +1,11 @@
 var container = $("#container");
 
+var cutItButton = $("cutBtn");
+
 const cheeses = [
     {
         name: "Havarti",
-        img: "placeholder",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
         smell: "Foot, Fart, Dead Animal",
         type: "Semi-soft", 
         taste: "Butter, Magic, Unicorn Milk",
@@ -11,7 +13,7 @@ const cheeses = [
     },
     {
         name: "Cheddar",
-        img: "placeholder",
+        img: "src=./assets/images/Havarti-hero_grande.jpg",
         smell: "Foot, Fart, Dead Animal",
         type: "Semi-soft", 
         taste: "Butter, Magic, Unicorn Milk",
@@ -19,7 +21,7 @@ const cheeses = [
     },
     {
         name: "Goat",
-        img: "placeholder",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
         smell: "Foot, Fart, Dead Animal",
         type: "Semi-soft", 
         taste: "Butter, Magic, Unicorn Milk",
@@ -33,10 +35,15 @@ var printCheeseCards = function() {
     for(var i = 0; i < cheeses.length; i++) {
         console.log("card# " + cheeses[i]);
         var taskdiv = $("<div>")
+            .attr('id', "taskdiv-" + i)
             .addClass("taskdiv");
 
-        var image = $("<img>")
-            .addClass(cheeses[i].img);
+        var image = $('<img />', {
+            id: "image-" + i, 
+            class: "card-image",
+            src: href="https://images.punkapi.com/v2/keg.png"
+            
+        })         
 
         var cheeseName = $("<h2>")
             .addClass("cheese-name")
@@ -46,20 +53,69 @@ var printCheeseCards = function() {
             .addClass("cutBtn")
             .text('CUT IT')
             .click(function () {
-                
+                console.log("hello")
+                cheeseCard($(this).parent())
             });
             
 
         
         container.append(taskdiv);
-        container.append(image);
-        container.append(cheeseName);
-        container.append(cutBtn);
+        taskdiv.append(image);
+        taskdiv.append(cheeseName);
+        taskdiv.append(cutBtn);
     };      
             
 };
 
-var cheeseCard = function() {};
+// print large cards on btn click
+var cheeseCard = function(event) {
+    console.log(event);
+    var taskdivBig = $('<div>')
+        .addClass("taskdivBig")
+        container.prepend(taskdivBig);
+
+        var imageBig = $('<img />', {
+            id: "imageBig", 
+            class: "card-imageBig",
+            src: href="https://images.punkapi.com/v2/keg.png"
+            
+        })   
+        
+        var wineMeBtn = $("<button/>")
+            .addClass("wineBtn")
+            .text('WINE ME, BBY!')
+            .click(function () {
+                console.log("wine is fine")
+            })
+
+        var detailsSection = $("<section>")
+            .addClass("detailsSection")
+
+        var beerName = $("<h2>")
+            .addClass("beerName")
+            .text("Deschute's Porter")
+        
+        var originText = $("<p>")
+            .addClass("originText")
+            .text("Origin: " + "Denmark")
+
+        var noseText = $("<p>")
+            .addClass("noseText")
+            .text("Nose: " + "Foot, Fart, Dead Animal")
+
+        var tasteText = $("<p>")
+            .addClass("tasteText")
+            .text("Taste: " + "Butter, Magic, Unicorn Milk")
+
+        var grateItBtn = $("<button/>")
+            .addClass("grateBtn")
+            .text("GRATE IT")
+            .click(function() {
+                container.append(taskdivBig);
+            })
+
+        taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
+};
 
 // $('<button/>')
 //     .text('Test')
