@@ -11,3 +11,20 @@
     flex-direction: column;
     width: 60%;
 }
+
+.taskdiv {
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.card-image {
+    height: 50px;
+    width: 50px;
+}
+
+.card-imageBig {
+    height: 50px;
+    width: 50px;
+}
+
+
