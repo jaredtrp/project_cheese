@@ -65,7 +65,7 @@ var cheeseCard = function() {};
 //     .text('Test')
 //     .click(function () { alert('hi'); });
 
-// // or
+// or
 
 // $('<button>Test</button>').click(function () { alert('hi'); });
 
