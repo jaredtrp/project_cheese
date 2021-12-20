@@ -29,6 +29,7 @@ const cheeses = [
 
 
 //print the cards of cheese on the page at open
+
 var printCheeseCards = function() {
     for(var i = 0; i < cheeses.length; i++) {
         console.log("card# " + cheeses[i]);
