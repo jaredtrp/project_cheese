@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const volumeValue = volume.value
                 const volumeUnit = volume.unit
 
-                randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
-                descriptionDisplay.innerHTML = description;
+                // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
+                // descriptionDisplay.innerHTML = description;
+
+                printCheeseCards(name, description, volume, volumeValue, volumeUnit);
             })
     }
 
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 })
 
-var container = $("#container");
+var container = $("#beer-container");
 
 var getBeer = function(beer) {
 
@@ -79,23 +81,30 @@ const cheeses = [
 
 
 //print the cards of cheese on the page at open
-var printCheeseCards = function() {
-    for(var i = 0; i < cheeses.length; i++) {
-        console.log("card# " + cheeses[i]);
+var printCheeseCards = function(name, description, volume, volumeValue, volumeUnit) {
+    
         var taskdiv = $("<div>")
-            .attr('id', "taskdiv-" + i)
+            .attr('id', "taskdiv-")
             .addClass("taskdiv");
 
-        var image = $('<img />', {
-            id: "image-" + i, 
-            class: "card-image",
-            src: href="https://images.punkapi.com/v2/keg.png"
+        // var image = $('<img />', {
+        //     id: "image-", 
+        //     class: "card-image",
+        //     src: href="https://images.punkapi.com/v2/keg.png"
             
-        })         
+        // })         
 
-        var cheeseName = $("<h2>")
+        var beerName = $("<h2>")
             .addClass("cheese-name")
-            .text(cheeses[i].name);
+            .text(name);
+
+        var beerInfo = $("<h3>")
+            .addClass("beer-info")
+            .text(description)
+
+        var beerVol = $("<p>")
+            .addClass("beer-vol")
+            .text(volumeValue + volumeUnit)
         
         var cutBtn = $("<button/>")
             .addClass("cutBtn")
@@ -108,12 +117,13 @@ var printCheeseCards = function() {
 
         
         container.append(taskdiv);
-        taskdiv.append(image);
-        taskdiv.append(cheeseName);
+        // taskdiv.append(image);
+        taskdiv.append(beerName);
+        taskdiv.append(beerInfo);
+        taskdiv.append(beerVol);
         taskdiv.append(cutBtn);
     };      
             
-};
 
 // print large cards on btn click
 var cheeseCard = function(event) {
@@ -165,38 +175,7 @@ var cheeseCard = function(event) {
         taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
 };
 
-// $('<button/>')
-//     .text('Test')
-//     .click(function () { alert('hi'); });
-
-// or
-
-// $('<button>Test</button>').click(function () { alert('hi'); });
-
-
-
-
-
-// var createTask = function(taskText, taskDate, taskList) {
-//     create elements that make up a task item
-//     var taskLi = $("<li>").addClass("list-group-item");
-//     var taskSpan = $("<span>")
-//       .addClass("badge badge-primary badge-pill")
-//       .text(taskDate);
-//     var taskP = $("<p>")
-//       .addClass("m-1")
-//       .text(taskText);
-  
-//     append span and p element to parent li
-//     taskLi.append(taskSpan, taskP);
-  
-//     check due date
-//     auditTask(taskLi);
-  
-//     append to ul list on the page
-//     $("#list-" + taskList).append(taskLi);
-//   };
 
 
 // call the printcheesecards function
-printCheeseCards();
+// printCheeseCards();
