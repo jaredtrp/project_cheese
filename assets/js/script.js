@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const startBtn = document.querySelector('.beer-button');
+    const startBtn = document.querySelector('#beer-button-container');
     const randomBeer = document.querySelector('.random-beer');
     const descriptionDisplay = document.querySelector('.description');
 
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(data)
                 const name = data[0].name
+                const tagline = data[0].tagline
                 const description = data[0].description
                 const {volume} = data[0]
                 const volumeValue = volume.value
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
                 // descriptionDisplay.innerHTML = description;
 
-                printCheeseCards(name, description, volume, volumeValue, volumeUnit);
+                printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit);
             })
     }
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 })
 
-var container = $("#beer-container");
+var container = $("#beer-card-container");
 
 var getBeer = function(beer) {
 
@@ -81,11 +82,11 @@ const cheeses = [
 
 
 //print the cards of cheese on the page at open
-var printCheeseCards = function(name, description, volume, volumeValue, volumeUnit) {
+var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit) {
     
         var taskdiv = $("<div>")
             .attr('id', "taskdiv-")
-            .addClass("taskdiv");
+            .addClass("taskdiv row");
 
         // var image = $('<img />', {
         //     id: "image-", 
@@ -95,11 +96,15 @@ var printCheeseCards = function(name, description, volume, volumeValue, volumeUn
         // })         
 
         var beerName = $("<h2>")
-            .addClass("cheese-name")
+            .addClass("cheese-name columns")
             .text(name);
 
-        var beerInfo = $("<h3>")
-            .addClass("beer-info")
+        var beerTagline = $("<h3>")
+            .addClass("beer-tagline columns")
+            .text(tagline)
+
+        var beerInfo = $("<p>")
+            .addClass("beer-info columns")
             .text(description)
 
         var beerVol = $("<p>")
@@ -111,22 +116,23 @@ var printCheeseCards = function(name, description, volume, volumeValue, volumeUn
             .text('CUT IT')
             .click(function () {
                 console.log("hello")
-                cheeseCard($(this).parent())
+                beerCard($(this).parent())
             });
             
 
         
-        container.append(taskdiv);
+        container.prepend(taskdiv);
         // taskdiv.append(image);
         taskdiv.append(beerName);
+        taskdiv.append(beerTagline);
         taskdiv.append(beerInfo);
         taskdiv.append(beerVol);
-        taskdiv.append(cutBtn);
+        taskdiv.append(cutBtn); 
     };      
             
 
 // print large cards on btn click
-var cheeseCard = function(event) {
+var beerCard = function(event) {
     console.log(event);
     var taskdivBig = $('<div>')
         .addClass("taskdivBig")
@@ -178,4 +184,4 @@ var cheeseCard = function(event) {
 
 
 // call the printcheesecards function
-// printCheeseCards();
+// printBeerCards();
