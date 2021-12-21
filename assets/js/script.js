@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 })
 
-var container = $("#beer-card-container");
+var container = $("#beer-card");
 
 var getBeer = function(beer) {
 
@@ -53,9 +53,7 @@ var getBeer = function(beer) {
         })
 }
 
-var cutItButton = $("cutBtn");
-
-const cheeses = [
+const beerses = [
     {
         name: "Havarti",
         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
@@ -98,23 +96,23 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         // })         
 
         var beerName = $("<h2>")
-            .addClass("cheese-name columns")
+            .addClass("cheese-name transparent columns")
             .text(name);
 
         var beerTagline = $("<h3>")
-            .addClass("beer-tagline columns")
+            .addClass("beer-tagline transparent columns")
             .text(tagline)
 
         var beerInfo = $("<p>")
-            .addClass("beer-info columns")
+            .addClass("beer-info transparent columns")
             .text(description)
 
         var beerVol = $("<p>")
-            .addClass("beer-vol")
+            .addClass("beer-vol transparent")
             .text(volumeValue + volumeUnit)
         
         var cutBtn = $("<button/>")
-            .addClass("cutBtn")
+            .addClass("button cutBtn")
             .text('CUT IT')
             .click(function () {
                 console.log("hello")
@@ -122,7 +120,7 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
             });
             
 
-        
+        holdMyBeer();
         container.prepend(taskdiv);
         // taskdiv.append(image);
         taskdiv.append(beerName);
@@ -183,7 +181,88 @@ var beerCard = function(event) {
         taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
 };
 
+var holdMyBeer = function () {
+    localStorage.setItem('search-bar', JSON.stringify(beerses));
+};
 
+var fillMyBeer = function () {
+    var savedBeer = localStorage.getItem('search-bar');
+
+        if(!savedBeer) {
+            return false;
+        }
+
+        savedBeer = JSON.parse(savedHistory);
+
+        for (var i = 0; i < savedBeer.length; i++) {
+            beerses[i] = (savedBeer[i]);
+        }
+
+        for (var i = 0; i < savedBeer.length; i++) {
+            beerHistoryBtns = $('<button></button>')
+                .text(savedBeer[i])
+                .attr('id', 'beerHistoryBtn' + i)
+                .addClass('button');
+                taskdiv.appen(beerHistoryBtns);
+        }
+
+
+
+}
+
+fillMyBeer();
 
 // call the printcheesecards function
 // printBeerCards();
+
+
+// var saveHistory = function () {
+//     localStorage.setItem("city-history", JSON.stringify(cityHistoryBtnsArr));
+//   }
+  
+//   var loadHistory = function () {
+//     var savedHistory = localStorage.getItem("city-history");
+  
+//     if(!savedHistory) {
+//       return false;
+//     }
+  
+//     console.log("Found Saved History!");
+  
+//     savedHistory = JSON.parse(savedHistory);
+  
+//     for(var i = 0; i < savedHistory.length; i++) {
+//       cityHistoryBtnsArr[i] = (savedHistory[i]);
+//     }
+  
+//     for (var i = 0; i < cityHistoryBtnsArr.length; i++) {
+//       var cityHistoryBtns = $('<button></button>')
+//         .text(cityHistoryBtnsArr[i])
+//         .attr("id", 'city-history-btn' + i)
+//         .addClass("city-history-btns btn btn-secondary col-9 p-2") 
+//         cityHistory.append(cityHistoryBtns);
+//     }
+//   }
+  
+//   $("#search-btn").on("click", function() {
+//     $(".card-container").remove();
+//     getLocation(cityInput);
+//   });
+  
+//   $("#city-history").on("click", function(event) {
+//     $(".city-history-btns").remove();
+//     var value = event.target.innerText.trim();
+//     $('.search-bar').val(value);
+//     var containerChildren = forecastCardsSection.children();
+//     containerChildren.remove();
+//     getLocation(cityInput);
+//   });
+  
+//   $("#clear-btn").click(function() {
+//     cityHistoryBtnsArr = [];
+//     saveHistory();
+//     populateCityHistory();
+//   });
+    
+  
+//   loadHistory();
