@@ -8,7 +8,6 @@
     padding-top: 100px;
     margin: 0;
     background: #FFC600;
-    /* height: 150vh; */
     font-family: Poppins, sans-serif;
     font-size: 20px;
     align-items: center;
@@ -47,6 +46,10 @@ section {
 #title-h2 {
     font-size: 30px;
     font-weight: 600;
+}
+
+.title2 {
+    font-family: Poppins, sans-serif;
 }
 
 .taskdiv {
