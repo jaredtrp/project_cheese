@@ -10,10 +10,13 @@ body {
     text-align: center;
 }
 
+/* Header Start */
 header {
     padding: 30px;
     display: flex;
-    flex-direction: column;background-image: url("../img/beer-background-royalty-free-image-1608331890_.jpg");
+    flex-direction: column;
+    top: 0;
+    background-image: url("../img/beer-background-royalty-free-image-1608331890_.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: 80%;
@@ -21,8 +24,9 @@ header {
 }
 
 header h1 {
-    font-size: 160px;
-    margin: 0%;
+    text-align: center;
+    font-size: 12.5vw; 
+    margin: 0;
     font-family:'Trebuchet MS';
     padding-top: 20px;
     text-shadow: 0 0 5px rgb(245, 245, 245);
@@ -36,7 +40,7 @@ header a {
 .kev-quote {
     color: white;
     margin-top: -20px;
-    font-size: 18px;
+    font-size: 15px;
     
 }
 
@@ -47,8 +51,10 @@ header a {
     text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
+/* Hero Start */
+
 #instruction {
-    width: 95%;
+    width: 100%;
 }
 
 
