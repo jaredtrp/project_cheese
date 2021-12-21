@@ -2,13 +2,13 @@
 
 *, *::before, *::after {
     box-sizing: border-box;
+    background-color: #F9C847;
+    font-family: Poppins, sans-serif;
 }
 
 .body-style {
     padding-top: 100px;
     margin: 0;
-    background-color: #F9C847;
-    font-family: Poppins, sans-serif;
     font-size: 20px;
     height: 100vh;
     display: flex;
@@ -49,7 +49,6 @@ section {
     width: 100%;
     background-color: #ffffff;
     border-radius: 5px;
-    color: #c6c6c6;
     padding: 15px;
     margin: 30px;
 }
@@ -57,6 +56,7 @@ section {
 .taskdiv {
     padding: 20px;
     border-radius: 3px;
+    background-color: #F5BD4A;
 }
 
 .card-image {
@@ -67,4 +67,14 @@ section {
 .card-imageBig {
     height: 50px;
     width: 50px;
+}
+
+.button {
+    background-color: #BA803A;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.transparent {
+    background-color: transparent;
 }
