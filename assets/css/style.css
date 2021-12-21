@@ -25,7 +25,7 @@ header h1 {
     margin: 0%;
     font-family:'Trebuchet MS';
     padding-top: 20px;
-    text-shadow: 0 0 5px rgb(255, 196, 0);
+    text-shadow: 0 0 5px rgb(245, 245, 245);
 }
 
 header a {
@@ -34,24 +34,22 @@ header a {
 }
 
 .kev-quote {
-    color: rgb(253, 253, 253);
+    color: white;
     margin-top: -20px;
-    font-size: 15px;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    
 }
 
-.kev1 {
-    font-size: 25px;
+.kev1 { 
+    color: rgb(68, 3, 3);
+    font-size: 28px;
     font-weight: bold;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 #instruction {
     width: 95%;
 }
-
-
-nav {
-    
 
 
 .search-bar {
