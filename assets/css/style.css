@@ -7,40 +7,23 @@
 .body-style {
     padding-top: 100px;
     margin: 0;
-    background: #FFC600;
+    background-color: #F9C847;
     font-family: Poppins, sans-serif;
     font-size: 20px;
-    align-items: center;
+    height: 100vh;
     display: flex;
+    align-items: center;
     flex-direction: column;
-}
-
-.logo {
-    width: 100%;
-    max-width: 450px;
 }
 
 .center-content {
     text-align: center;
 }
 
-input {
-    width: 100%;
-    max-width: 500px;
-    background-color: #ffffff;
-    border: 0;
-    border-radius: 5px;
-    color: #c6c6c6;
-    padding: 15px;
-    margin: 30px;
-    flex-grow: 1;
-}
-
-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.main-area {
+    /* display: flex; */
     align-items: center;
+    flex-direction: column;
 }
 
 #title-h2 {
@@ -48,23 +31,40 @@ section {
     font-weight: 600;
 }
 
-.title2 {
-    font-family: Poppins, sans-serif;
+.logo {
+    width: 100%;
+    max-width: 450px;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border-radius: 10px;
+}
+
+#search-bar {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #c6c6c6;
+    padding: 15px;
+    margin: 30px;
 }
 
 .taskdiv {
-    background-color: #f5bd4a;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    max-width: 700px; 
-    width: 100%;
-    border-radius: 10px;
     padding: 20px;
+    border-radius: 3px;
 }
 
-.button {
-    background-color: #2D230C;
-    border-radius: 5px;
-    color: #ffffff;
+.card-image {
+    height: 50px;
+    width: 50px;
+}
+
+.card-imageBig {
+    height: 50px;
+    width: 50px;
 }
