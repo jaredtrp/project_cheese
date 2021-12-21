@@ -11,25 +11,35 @@
 </head>
 
 <body>
-<div class="body-style">
     <header>
-        <nav class="hero-area center-content">
-                <img class="logo" alt="Krumbly logo" src="./assets/images/pc-logo.png">
-                <h2 id="title-h2">"A bleutiful thing" - Kevin, "Your God of Randomness"</h2>
-        </nav>
-    </header>
-    
-    <div>
-        <!-- Add instructions for page, clear and clean -->
-        <p id="instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut accumsan nulla. Vivamus massa mauris.</p>
-    </div>
-  
-    <main class="main-area center-content">
-        <div>
-            <!-- search bar functionality, need text and autocomplete -->
-            <form id="search-bar">Search/autocomplete</form>
+        <h1>
+            <a href="">BREWHAUS</a>
+        </h1>
+        <p class="kev-quote kev1">"A Brew-tiful Thing"</p>
+        <p class="kev-quote">- Kevin "God of Randomness" Wilkerson</p> 
+        
+
+    </header>    
+        
+    <nav class="hero-area center-content">
+            <!-- <img class="logo" alt="Krumbly logo" src="./assets/images/pc-logo.png"> -->
             
-        </div>
+            
+            <p id="instruction">Search for a specific beer or click 'testing' for a random beer.</p>
+            
+            <!-- Add instructions for page, clear and clean --> 
+           
+            <form class="search-bar">
+                <!-- search bar functionality, need text and autocomplete -->
+                <input type="text" placeholder="Your Beer" name="beer" id="beer" class="form-input">
+                
+            </form>      
+        </nav>       
+   
+    
+    
+
+    <main class="main-area center-content">
         <section id="beer-button-container">
             <h3 class="random-beer">Click me for a Random Beer!</h3>
             <div class="beer-button">
@@ -54,6 +64,5 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</div>
 </body>
 </html>
