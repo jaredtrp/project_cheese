@@ -99,15 +99,6 @@ header a {
     max-width: 450px;
 }
 
-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    border-radius: 10px;
-}
-
-
 .taskdiv {
     padding: 20px;
     border-radius: 3px;
