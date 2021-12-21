@@ -2,8 +2,6 @@
 
 *, *::before, *::after {
     box-sizing: border-box;
-    background-color: #F9C847;
-    font-family: Poppins, sans-serif;
 }
 
 body {
