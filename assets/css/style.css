@@ -25,15 +25,16 @@ header h1 {
     margin: 0%;
     font-family:'Trebuchet MS';
     padding-top: 20px;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 5px rgb(255, 196, 0);
 }
 
 header a {
-    text-decoration: none;
+    text-decoration: underline;
+    color: rgb(68, 3, 3);
 }
 
 .kev-quote {
-    color: white;
+    color: rgb(253, 253, 253);
     margin-top: -20px;
     font-size: 15px;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
