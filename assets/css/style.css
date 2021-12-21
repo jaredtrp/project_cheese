@@ -1,8 +1,39 @@
-* {
-    --bg: #F9C847;
-    --primary: #2D230C;
-    --hole-color: #F0AC4D;
-    --tertiary: #FFFFFF;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');]
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.body-style {
+    padding-top: 100px;
+    margin: 0;
+    background-color: #F9C847;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.main-area {
+    /* display: flex; */
+    align-items: center;
+    flex-direction: column;
+}
+
+#title-h2 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.logo {
+    width: 100%;
+    max-width: 450px;
 }
 
 #container {
@@ -10,4 +41,30 @@
     display: flex;
     flex-direction: column;
     width: 60%;
+    border-radius: 10px;
+}
+
+#search-bar {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #c6c6c6;
+    padding: 15px;
+    margin: 30px;
+}
+
+.taskdiv {
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.card-image {
+    height: 50px;
+    width: 50px;
+}
+
+.card-imageBig {
+    height: 50px;
+    width: 50px;
 }
