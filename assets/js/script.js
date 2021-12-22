@@ -192,7 +192,8 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedHistory);
+        savedBeer = JSON.parse(savedBeer);
+
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
@@ -203,7 +204,7 @@ var fillMyBeer = function () {
                 .text(savedBeer[i])
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
-                taskdiv.appen(beerHistoryBtns);
+                taskdiv.append(beerHistoryBtns);
         }
 
 
