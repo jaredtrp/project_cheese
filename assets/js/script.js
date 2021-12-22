@@ -51,35 +51,7 @@ var getBeer = function(beer) {
                 })
             }
         })
-}
-
-// const cheeses = [
-//     {
-//         name: "Havarti",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark" 
-//     },
-//     {
-//         name: "Cheddar",
-//         img: "src=./assets/images/Havarti-hero_grande.jpg",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     },
-//     {
-//         name: "Goat",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     }
-// ];
-
+};
 
 //print the cards of cheese on the page at open
 var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit) {
@@ -204,11 +176,8 @@ var fillMyBeer = function () {
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
                 taskdiv.appen(beerHistoryBtns);
-        }
-
-
-
-}
+    };
+};
 
 fillMyBeer();
 
