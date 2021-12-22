@@ -19,11 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const {volume} = data[0]
                 const volumeValue = "vol: " + volume.value
                 const volumeUnit = " " + volume.unit
+                const abvValue = "ABV: " +  data[0].abv;
 
                 // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
                 // descriptionDisplay.innerHTML = description;
 
-                printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit);
+                printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abvValue);
             })
     }
 
@@ -54,7 +55,7 @@ var getBeer = function(beer) {
 };
 
 //print the cards of cheese on the page at open
-var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit) {
+var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit, abvValue) {
     
         var taskdiv = $("<div>")
             .attr('id', "taskdiv-")
@@ -74,6 +75,10 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         var beerTagline = $("<h3>")
             .addClass("beer-tagline transparent columns")
             .text(tagline)
+            
+        var ABVPrint = $("<h3>")
+        .addClass("ABV-Value transparent columns")
+        .text(abvValue)
 
         var beerInfo = $("<p>")
             .addClass("beer-info transparent columns")
@@ -97,6 +102,7 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         // taskdiv.append(image);
         taskdiv.append(beerName);
         taskdiv.append(beerTagline);
+        taskdiv.append(ABVPrint);
         taskdiv.append(beerInfo);
         taskdiv.append(beerVol);
         taskdiv.append(cutBtn); 
@@ -164,7 +170,7 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedHistory);
+        savedBeer = JSON.parse(savedBeer);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
@@ -175,9 +181,12 @@ var fillMyBeer = function () {
                 .text(savedBeer[i])
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
-                taskdiv.appen(beerHistoryBtns);
-    };
-};
+                $(".beer-card-container").prepend(beerHistoryBtns);
+        }
+
+
+
+}
 
 fillMyBeer();
 
