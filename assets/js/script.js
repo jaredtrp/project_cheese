@@ -16,7 +16,6 @@ let getRequestedWeather = function (){
         tempVal.push(tempValue);
     });
 };
-getRequestedWeather();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -28,59 +27,48 @@ document.addEventListener('DOMContentLoaded', () => {
         function getData(e) {
             e.preventDefault()
 
-            fetch('https://api.punkapi.com/v2/beers?abv_lt=5')
+            fetch('https://api.punkapi.com/v2/beers?abv_lt=7.5&page=' + Math.floor(Math.random()*3+1) + '&per_page=80')
                 .then(response => {
                     return response.json()
                 })
                 .then(data => {
-                    console.log(data);
-                })
-        }
-    } else {
-        function getData(e) {
-            e.preventDefault()
-
-            fetch('https://api.punkapi.com/v2/beers?abv_gt=4.99')
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    console.log(data);
-                })
-            }
-    }
-
-    /* function getData(e) {
-        e.preventDefault()
-
-        for(var i = 0; i <= 325; i++) {
-
-            fetch('https://api.punkapi.com/v2/beers/random')
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    console.log(data)
+                    const i = Math.floor(Math.random()*data.length)
                     const name = data[i].name
                     const tagline = data[i].tagline
                     const description = data[i].description
                     const {volume} = data[i]
                     const volumeValue = volume.value
                     const volumeUnit = volume.unit
-                    const abv = data.abv[i]
+                    const abv = data[i].abv
+                    console.log(data[i])
+                })
+        }
+    } else {
+        function getData(e) {
+            e.preventDefault()
 
-                    if(tempValue <= 70) {
-
-                    }
+            fetch('https://api.punkapi.com/v2/beers?abv_gt=7.49&page=' + Math.floor(Math.random()*2+1) + '&per_page=80')
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    const i = Math.floor(Math.random()*data.length)
+                    const name = data[i].name
+                    const tagline = data[i].tagline
+                    const description = data[i].description
+                    const {volume} = data[i]
+                    const volumeValue = volume.value
+                    const volumeUnit = volume.unit
+                    const abv = data[i].abv
+                    console.log(data[i])
 
                     randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
                     descriptionDisplay.innerHTML = description;
 
-                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit);
-
+                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
                 })
-        }
-    } */
+            }
+    }
 
     startBtn.addEventListener('click', getData);
 
