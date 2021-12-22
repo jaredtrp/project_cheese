@@ -99,10 +99,17 @@ header a {
     max-width: 450px;
 }
 
+#container {
+    background-color: #F0AC4D;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border-radius: 10px;
+}
+
 .taskdiv {
     padding: 20px;
     border-radius: 3px;
-    background-color: #F5BD4A;
 }
 
 .card-image {
@@ -113,14 +120,4 @@ header a {
 .card-imageBig {
     height: 50px;
     width: 50px;
-}
-
-.button {
-    background-color: #BA803A;
-    color: #ffffff;
-    border-radius: 5px;
-}
-
-.transparent {
-    background-color: transparent;
 }
