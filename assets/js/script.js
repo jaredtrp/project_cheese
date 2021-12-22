@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // descriptionDisplay.innerHTML = description;
 
                 printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit);
+                //holdMyBeer();
             })
     }
 
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 })
+
+var beerses = [];
 
 var container = $("#beer-card");
 
@@ -192,7 +195,7 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedHistory);
+        savedBeer = JSON.parse(savedBeer);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
