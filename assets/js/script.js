@@ -14,16 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(data)
                 const name = data[0].name
-                const tagline = data[0].tagline
-                const description = data[0].description
+                const tagline = "Style: " + data[0].tagline
+                const description = "Info: " + data[0].description
                 const {volume} = data[0]
-                const volumeValue = volume.value
-                const volumeUnit = volume.unit
+                const volumeValue = "vol: " + volume.value
+                const volumeUnit = " " + volume.unit
 
                 // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
                 // descriptionDisplay.innerHTML = description;
 
                 printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit);
+                //holdMyBeer();
             })
     }
 
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 })
+
+var beerses = [];
 
 var container = $("#beer-card");
 
@@ -53,32 +56,32 @@ var getBeer = function(beer) {
         })
 }
 
-const beerses = [
-    {
-        name: "Havarti",
-        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark" 
-    },
-    {
-        name: "Cheddar",
-        img: "src=./assets/images/Havarti-hero_grande.jpg",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark"
-    },
-    {
-        name: "Goat",
-        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark"
-    }
-];
+// const cheeses = [
+//     {
+//         name: "Havarti",
+//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+//         smell: "Foot, Fart, Dead Animal",
+//         type: "Semi-soft", 
+//         taste: "Butter, Magic, Unicorn Milk",
+//         origin: "Denmark" 
+//     },
+//     {
+//         name: "Cheddar",
+//         img: "src=./assets/images/Havarti-hero_grande.jpg",
+//         smell: "Foot, Fart, Dead Animal",
+//         type: "Semi-soft", 
+//         taste: "Butter, Magic, Unicorn Milk",
+//         origin: "Denmark"
+//     },
+//     {
+//         name: "Goat",
+//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+//         smell: "Foot, Fart, Dead Animal",
+//         type: "Semi-soft", 
+//         taste: "Butter, Magic, Unicorn Milk",
+//         origin: "Denmark"
+//     }
+// ];
 
 
 //print the cards of cheese on the page at open
@@ -193,7 +196,6 @@ var fillMyBeer = function () {
         }
 
         savedBeer = JSON.parse(savedBeer);
-
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);

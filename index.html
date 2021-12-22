@@ -11,25 +11,32 @@
 </head>
 
 <body>
-<div class="body-style">
     <header>
-        <nav class="hero-area center-content">
-                <img class="logo" alt="Krumbly logo" src="./assets/images/hs-logo.png">
-                <h2 id="title-h2">"A bleutiful thing" - Kevin, "Your God of Randomness"</h2>
-        </nav>
-    </header>
-    
-    <div>
-        <!-- Add instructions for page, clear and clean -->
-        <p id="instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut accumsan nulla. Vivamus massa mauris.</p>
-    </div>
-  
-    <main class="main-area center-content">
-        <div>
-            <!-- search bar functionality, need text and autocomplete -->
-            <input type="text" placeholder="Search/autocomplete" id="search-bar"></input>
-            
+        <h1>
+            <a href="">BREWHAUS</a>
+        </h1>
+        <!-- KEVIN'S QUOTE -->
+        <p class="kev-quote kev1">"A BREW-tiful Thing"</p>
+        <p class="kev-quote">- Kevin "God of Randomness" Wilkerson</p> 
+    </header>  
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-form">
+            <!-- Search intructions -->
+            <p>Search beer by name or click 'testing' for a random beer.</p> 
+
+            <form class=>
+                <!-- search bar functionality, need text and autocomplete -->
+                <input type="text" placeholder="Search:" name="beer" id="beer" class="search-bar">
+                
+            </form> 
+
         </div>
+    </section>
+    
+
+    <main class="main-area center-content">
         <section id="beer-button-container">
             <h3 class="random-beer"></h3>
             <div class="beer-button">
@@ -53,6 +60,5 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</div>
 </body>
 </html>
