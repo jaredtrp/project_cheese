@@ -26,13 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abvValue);
             })
-    }
+    };
 
     startBtn.addEventListener('click', getData);
-
-    
 })
 
+var beerses = [];
 var container = $("#beer-card");
 
 var getBeer = function(beer) {
@@ -90,9 +89,8 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         
         var cutBtn = $("<button/>")
             .addClass("button cutBtn")
-            .text('CUT IT')
+            .text('SAVE')
             .click(function () {
-                console.log("hello")
                 beerCard($(this).parent())
             });
             
@@ -183,7 +181,6 @@ var fillMyBeer = function () {
                 .addClass('button');
                 $(".beer-card-container").prepend(beerHistoryBtns);
         }
-
 
 
 }
