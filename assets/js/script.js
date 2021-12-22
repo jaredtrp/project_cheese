@@ -1,8 +1,9 @@
+var beerses = [];
+var container = $("#beer-card");
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    const startBtn = document.querySelector('#beer-button-container');
-    const randomBeer = document.querySelector('.random-beer');
-    const descriptionDisplay = document.querySelector('.description');
+    const BeerBtn = document.querySelector('#beer-btn-container');
 
     function getData(e) {
         e.preventDefault()
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 const name = data[0].name
                 const tagline = "Style: " + data[0].tagline
                 const description = "Info: " + data[0].description
@@ -28,11 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     };
 
-    startBtn.addEventListener('click', getData);
+    BeerBtn.addEventListener('click', getData);
 })
-
-var beerses = [];
-var container = $("#beer-card");
 
 var getBeer = function(beer) {
 
@@ -53,116 +51,115 @@ var getBeer = function(beer) {
         })
 };
 
-//print the cards of cheese on the page at open
+//print the cards of beer on the page at open
 var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit, abvValue) {
-    
-        var taskdiv = $("<div>")
-            .attr('id', "taskdiv-")
-            .addClass("taskdiv row");
-
-        // var image = $('<img />', {
-        //     id: "image-", 
-        //     class: "card-image",
-        //     src: href="https://images.punkapi.com/v2/keg.png"
-            
-        // })         
-
-        var beerName = $("<h2>")
-            .addClass("cheese-name transparent columns")
-            .text(name);
-
-        var beerTagline = $("<h3>")
-            .addClass("beer-tagline transparent columns")
-            .text(tagline)
-            
-        var ABVPrint = $("<h3>")
-        .addClass("ABV-Value transparent columns")
-        .text(abvValue)
-
-        var beerInfo = $("<p>")
-            .addClass("beer-info transparent columns")
-            .text(description)
-
-        var beerVol = $("<p>")
-            .addClass("beer-vol transparent")
-            .text(volumeValue + volumeUnit)
         
-        var cutBtn = $("<button/>")
-            .addClass("button cutBtn")
-            .text('SAVE')
-            .click(function () {
-                beerCard($(this).parent())
-            });
-            
+    // var image = $('<img />', {
+    //     id: "image-", 
+    //     class: "card-image",
+    //     src: href="https://images.punkapi.com/v2/keg.png"
+        
+    // }) 
 
-        holdMyBeer();
-        container.prepend(taskdiv);
-        // taskdiv.append(image);
-        taskdiv.append(beerName);
-        taskdiv.append(beerTagline);
-        taskdiv.append(ABVPrint);
-        taskdiv.append(beerInfo);
-        taskdiv.append(beerVol);
-        taskdiv.append(cutBtn); 
-    };      
+    var taskdiv = $("<div>")
+        .attr('id', "taskdiv-")
+        .addClass("taskdiv row");
+
+    var beerName = $("<h2>")
+        .addClass("cheese-name transparent columns")
+        .text(name);
+
+    var beerTagline = $("<h3>")
+        .addClass("beer-tagline transparent columns")
+        .text(tagline)
+        
+    var ABVPrint = $("<h3>")
+    .addClass("ABV-Value transparent columns")
+    .text(abvValue)
+
+    var beerInfo = $("<p>")
+        .addClass("beer-info transparent columns")
+        .text(description)
+
+    var beerVol = $("<p>")
+        .addClass("beer-vol transparent")
+        .text(volumeValue + volumeUnit)
+    
+    var saveBtn = $("<button/>")
+        .addClass("button saveBtn")
+        .text('SAVE')
+        .click(function () {
+           holdMyBeer();
+        });
+        
+    container.prepend(taskdiv);
+    // taskdiv.append(image);
+    taskdiv.append(beerName);
+    taskdiv.append(beerTagline);
+    taskdiv.append(ABVPrint);
+    taskdiv.append(beerInfo);
+    taskdiv.append(beerVol);
+    taskdiv.append(saveBtn); 
+};      
             
 
 // print large cards on btn click
-var beerCard = function(event) {
-    console.log(event);
-    var taskdivBig = $('<div>')
-        .addClass("taskdivBig")
-        container.prepend(taskdivBig);
+// var beerCard = function(event) {
+//     console.log(event);
+//     var taskdivBig = $('<div>')
+//         .addClass("taskdivBig")
+//         container.prepend(taskdivBig);
 
-        var imageBig = $('<img />', {
-            id: "imageBig", 
-            class: "card-imageBig",
-            src: href="https://images.punkapi.com/v2/keg.png"
+//         var imageBig = $('<img />', {
+//             id: "imageBig", 
+//             class: "card-imageBig",
+//             src: href="https://images.punkapi.com/v2/keg.png"
             
-        })   
+//         })   
         
-        var wineMeBtn = $("<button/>")
-            .addClass("wineBtn")
-            .text('WINE ME, BBY!')
-            .click(function () {
-                console.log("wine is fine")
-            })
+//         var wineMeBtn = $("<button/>")
+//             .addClass("wineBtn")
+//             .text('WINE ME, BBY!')
+//             .click(function () {
+//                 console.log("wine is fine")
+//             })
 
-        var detailsSection = $("<section>")
-            .addClass("detailsSection")
+//         var detailsSection = $("<section>")
+//             .addClass("detailsSection")
 
-        var beerName = $("<h2>")
-            .addClass("beerName")
-            .text("Deschute's Porter")
+//         var beerName = $("<h2>")
+//             .addClass("beerName")
+//             .text("Deschute's Porter")
         
-        var originText = $("<p>")
-            .addClass("originText")
-            .text("Origin: " + "Denmark")
+//         var originText = $("<p>")
+//             .addClass("originText")
+//             .text("Origin: " + "Denmark")
 
-        var noseText = $("<p>")
-            .addClass("noseText")
-            .text("Nose: " + "Foot, Fart, Dead Animal")
+//         var noseText = $("<p>")
+//             .addClass("noseText")
+//             .text("Nose: " + "Foot, Fart, Dead Animal")
 
-        var tasteText = $("<p>")
-            .addClass("tasteText")
-            .text("Taste: " + "Butter, Magic, Unicorn Milk")
+//         var tasteText = $("<p>")
+//             .addClass("tasteText")
+//             .text("Taste: " + "Butter, Magic, Unicorn Milk")
 
-        var grateItBtn = $("<button/>")
-            .addClass("grateBtn")
-            .text("GRATE IT")
-            .click(function() {
-                container.append(taskdivBig);
-            })
+//         var grateItBtn = $("<button/>")
+//             .addClass("grateBtn")
+//             .text("GRATE IT")
+//             .click(function() {
+//                 container.append(taskdivBig);
+//             })
 
-        taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
-};
+//         taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
+// };
 
 var holdMyBeer = function () {
-    localStorage.setItem('search-bar', JSON.stringify(beerses));
+    // console.log("saved");
+    localStorage.setItem('in-stock', JSON.stringify(beerses));
 };
 
 var fillMyBeer = function () {
-    var savedBeer = localStorage.getItem('search-bar');
+    var savedBeer = localStorage.getItem('in-stock');
 
         if(!savedBeer) {
             return false;
@@ -179,7 +176,7 @@ var fillMyBeer = function () {
                 .text(savedBeer[i])
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
-                $(".beer-card-container").prepend(beerHistoryBtns);
+                $("#beer-card").prepend(beerHistoryBtns);
         }
 
 

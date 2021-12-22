@@ -74,26 +74,24 @@ header a {
     color: rgb(255, 255, 255);
     width: 600px;
     height: 340px;
-    text-shadow: 0 0 10px rgb(0, 0, 0);;
 }
 
 
 /* Main Start */
-.main-area {
-    /* display: flex; */
+.main {
+    display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.logo {
-    width: 100%;
-    max-width: 450px;
+#beer-card {
+    
 }
 
 .taskdiv {
     padding: 20px;
     border-radius: 3px;
-    background-color: #F5BD4A;
+    background-color: #F5BD4A;width: 500px;
 }
 
 .card-image {
@@ -106,12 +104,22 @@ header a {
     width: 50px;
 }
 
-.button {
-    background-color: #BA803A;
-    color: #ffffff;
+.beer-btn {
+    background-color: #a57446;
     border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    font-weight: bold;
+    padding: 10px;
+    text-shadow: transparent;
+    box-shadow: 0 0 15px rgb(0, 0, 0);
 }
 
 .transparent {
     background-color: transparent;
+}
+
+.logo {
+    width: 100%;
+    max-width: 450px;
 }
