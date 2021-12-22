@@ -53,32 +53,32 @@ var getBeer = function(beer) {
         })
 }
 
-// const cheeses = [
-//     {
-//         name: "Havarti",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark" 
-//     },
-//     {
-//         name: "Cheddar",
-//         img: "src=./assets/images/Havarti-hero_grande.jpg",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     },
-//     {
-//         name: "Goat",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     }
-// ];
+const beerses = [
+    {
+        name: "Havarti",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark" 
+    },
+    {
+        name: "Cheddar",
+        img: "src=./assets/images/Havarti-hero_grande.jpg",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark"
+    },
+    {
+        name: "Goat",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark"
+    }
+];
 
 
 //print the cards of cheese on the page at open
@@ -192,7 +192,7 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedHistory);
+        savedBeer = JSON.parse(savedBeer);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
@@ -203,7 +203,7 @@ var fillMyBeer = function () {
                 .text(savedBeer[i])
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
-                taskdiv.appen(beerHistoryBtns);
+                $(".beer-card-container").prepend(beerHistoryBtns);
         }
 
 
