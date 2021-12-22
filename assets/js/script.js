@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomBeer = document.querySelector('.random-beer');
     const descriptionDisplay = document.querySelector('.description');
 
-    function getData(e) {
-        e.preventDefault()
+    function getData(data) {
+        data.preventDefault()
 
         fetch('https://api.punkapi.com/v2/beers/random')
             .then(response => {
@@ -36,7 +36,7 @@ var container = $("#beer-card");
 
 var getBeer = function(beer) {
 
-    // format the OpenWeather API url
+    // format the punk API url
     var apiURL = "https://api.punkapi.com/v2/";
 
     // make a request to the URL
