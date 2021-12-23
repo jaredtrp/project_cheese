@@ -1,12 +1,31 @@
 var beerses = [];
 var container = $("#beer-card");
+const tempVal = [];
+
+let getRequestedWeather = function (){
+    // API URL to pull the current weather
+    let requestWeather = 'https://api.openweathermap.org/data/2.5/weather?q=Austin,US&units=imperial&appid=73963c93b7e24695087cf9963cd9fc41';
+    
+    // Function that disects current weather card
+    fetch(requestWeather)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+
+        let tempValue = data.main.temp;
+        console.log(tempValue);
+        tempVal.push(tempValue);
+    });
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
     const BeerBtn = document.querySelector('#beer-btn-container');
 
-    function getData(e) {
-        e.preventDefault()
+    if (tempVal >= 65) {
+        function getData(e) {
+            e.preventDefault()
 
         fetch('https://api.punkapi.com/v2/beers/random')
             .then(response => {
@@ -27,9 +46,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abvValue);
             })
-    };
+        }
+    } else {
+        function getData(e) {
+            e.preventDefault()
+
+            fetch('https://api.punkapi.com/v2/beers?abv_gt=7.49&page=' + Math.floor(Math.random()*2+1) + '&per_page=80')
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    const i = Math.floor(Math.random()*data.length)
+                    const name = data[i].name
+                    const tagline = data[i].tagline
+                    const description = data[i].description
+                    const {volume} = data[i]
+                    const volumeValue = volume.value
+                    const volumeUnit = volume.unit
+                    const abv = data[i].abv
+                    console.log(data[i])
+
+                    randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
+                    descriptionDisplay.innerHTML = description;
+
+                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
+                })
+            }
+    }
 
     BeerBtn.addEventListener('click', getData);
+    
 })
 
 var getBeer = function(beer) {
