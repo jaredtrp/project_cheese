@@ -84,24 +84,13 @@ header a {
     flex-direction: column;
 }
 
-#beer-card {
-    
-}
-
 .taskdiv {
+    width: 600px;
+    margin: 50px;
     padding: 20px;
     border-radius: 3px;
-    background-color: #F5BD4A;width: 500px;
-}
-
-.card-image {
-    height: 50px;
-    width: 50px;
-}
-
-.card-imageBig {
-    height: 50px;
-    width: 50px;
+    background-color: #F5BD4A;
+    
 }
 
 .beer-btn {
@@ -111,15 +100,6 @@ header a {
     font-size: 45px;
     font-weight: bold;
     padding: 10px;
-    text-shadow: transparent;
+    text-shadow: black;
     box-shadow: 0 0 15px rgb(0, 0, 0);
-}
-
-.transparent {
-    background-color: transparent;
-}
-
-.logo {
-    width: 100%;
-    max-width: 450px;
 }

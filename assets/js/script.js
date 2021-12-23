@@ -58,31 +58,32 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     //     id: "image-", 
     //     class: "card-image",
     //     src: href="https://images.punkapi.com/v2/keg.png"
-        
     // }) 
 
     var taskdiv = $("<div>")
-        .attr('id', "taskdiv-")
-        .addClass("taskdiv row");
+        .saveBtn
+    // var taskdiv = $("<div>")
+    //     .attr('id', "taskdiv-")
+    //     .addClass("taskdiv row");
 
-    var beerName = $("<h2>")
-        .addClass("cheese-name transparent columns")
+    var beerName = $("<h3>")
+        .addClass("cheese-name columns")
         .text(name);
 
-    var beerTagline = $("<h3>")
-        .addClass("beer-tagline transparent columns")
+    var beerTagline = $("<h4>")
+        .addClass("beer-tagline columns")
         .text(tagline)
         
-    var ABVPrint = $("<h3>")
-    .addClass("ABV-Value transparent columns")
-    .text(abvValue)
+    var ABVPrint = $("<h4>")
+        .addClass("ABV-Value columns")
+        .text(abvValue)
 
     var beerInfo = $("<p>")
-        .addClass("beer-info transparent columns")
+        .addClass("beer-info columns")
         .text(description)
 
     var beerVol = $("<p>")
-        .addClass("beer-vol transparent")
+        .addClass("beer-vol")
         .text(volumeValue + volumeUnit)
     
     var saveBtn = $("<button/>")
