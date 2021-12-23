@@ -17,12 +17,16 @@ let getRequestedWeather = function (){
     });
 };
 
+
+// this event listener forces the js within it to wait until all DOM elements are loaded before enabling any functionality
 document.addEventListener('DOMContentLoaded', () => {
 
     const startBtn = document.querySelector('#beer-button-container');
     const randomBeer = document.querySelector('.random-beer');
     const descriptionDisplay = document.querySelector('.description');
 
+    /* check to see the temperature and if the temp is above 65 degrees return a random
+    beer of 7.5% abv or greater otherwise return a random beer of 7.4% abv or lower */
     if (tempVal >= 65) {
         function getData(e) {
             e.preventDefault()
@@ -70,57 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     }
 
+    // on click of "random" button, return a beer based on the temp
     startBtn.addEventListener('click', getData);
     
 })
 
 var container = $("#beer-card");
 
-var getBeer = function(beer) {
-
-    // format the OpenWeather API url
-    var apiURL = "https://api.punkapi.com/v2/";
-
-    // make a request to the URL
-    fetch(apiURL)
-        .then(function(response) {
-            // request was successful
-            if (response.ok) {
-                response.json().then(function(data) {
-                    // console log to test
-                    console.log(data);
-                    
-                })
-            }
-        })
-}
-
-const beerses = [
-    {
-        name: "Havarti",
-        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark" 
-    },
-    {
-        name: "Cheddar",
-        img: "src=./assets/images/Havarti-hero_grande.jpg",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark"
-    },
-    {
-        name: "Goat",
-        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-        smell: "Foot, Fart, Dead Animal",
-        type: "Semi-soft", 
-        taste: "Butter, Magic, Unicorn Milk",
-        origin: "Denmark"
-    }
-];
+const beerses = [];
 
 
 //print the cards of cheese on the page at open
@@ -157,16 +118,16 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
             .addClass("beer-vol transparent")
             .text(volumeValue + volumeUnit)
         
-        var cutBtn = $("<button/>")
-            .addClass("button cutBtn")
-            .text('CUT IT')
+        var saveBtn = $("<button/>")
+            .addClass("button saveBtn")
+            .text('SAVE IT')
             .click(function () {
                 console.log("hello")
-                beerCard($(this).parent())
+                holdMyBeer();
             });
             
 
-        holdMyBeer();
+        
         container.prepend(taskdiv);
         // taskdiv.append(image);
         taskdiv.append(beerName);
@@ -176,9 +137,9 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         taskdiv.append(beerVol);
         taskdiv.append(cutBtn); 
     };      
-            
 
-// print large cards on btn click
+
+    // print large cards on btn click
 var beerCard = function(event) {
     console.log(event);
     var taskdivBig = $('<div>')
@@ -229,11 +190,11 @@ var beerCard = function(event) {
 };
 
 var holdMyBeer = function () {
-    localStorage.setItem('search-bar', JSON.stringify(beerses));
+    localStorage.setItem('in-stock', JSON.stringify(beerses));
 };
 
 var fillMyBeer = function () {
-    var savedBeer = localStorage.getItem('search-bar');
+    var savedBeer = localStorage.getItem('in-stock');
 
         if(!savedBeer) {
             return false;
@@ -258,58 +219,6 @@ var fillMyBeer = function () {
 }
 
 fillMyBeer();
-
-// call the printcheesecards function
-// printBeerCards();
-
-
-// var saveHistory = function () {
-//     localStorage.setItem("city-history", JSON.stringify(cityHistoryBtnsArr));
-//   }
-  
-//   var loadHistory = function () {
-//     var savedHistory = localStorage.getItem("city-history");
-  
-//     if(!savedHistory) {
-//       return false;
-//     }
-  
-//     console.log("Found Saved History!");
-  
-//     savedHistory = JSON.parse(savedHistory);
-  
-//     for(var i = 0; i < savedHistory.length; i++) {
-//       cityHistoryBtnsArr[i] = (savedHistory[i]);
-//     }
-  
-//     for (var i = 0; i < cityHistoryBtnsArr.length; i++) {
-//       var cityHistoryBtns = $('<button></button>')
-//         .text(cityHistoryBtnsArr[i])
-//         .attr("id", 'city-history-btn' + i)
-//         .addClass("city-history-btns btn btn-secondary col-9 p-2") 
-//         cityHistory.append(cityHistoryBtns);
-//     }
-//   }
-  
-//   $("#search-btn").on("click", function() {
-//     $(".card-container").remove();
-//     getLocation(cityInput);
-//   });
-  
-//   $("#city-history").on("click", function(event) {
-//     $(".city-history-btns").remove();
-//     var value = event.target.innerText.trim();
-//     $('.search-bar').val(value);
-//     var containerChildren = forecastCardsSection.children();
-//     containerChildren.remove();
-//     getLocation(cityInput);
-//   });
-  
-//   $("#clear-btn").click(function() {
-//     cityHistoryBtnsArr = [];
-//     saveHistory();
-//     populateCityHistory();
-//   });
     
   
 //   loadHistory();
