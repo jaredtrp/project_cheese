@@ -27,29 +27,50 @@ document.addEventListener('DOMContentLoaded', () => {
         function getData(e) {
             e.preventDefault()
 
-        fetch('https://api.punkapi.com/v2/beers/random')
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                console.log(data)
-                const name = data[0].name
-                const tagline = "Style: " + data[0].tagline
-                const description = "Info: " + data[0].description
-                const {volume} = data[0]
-                const volumeValue = "vol: " + volume.value
-                const volumeUnit = " " + volume.unit
-                const abvValue = "ABV: " +  data[0].abv;
+            fetch('https://api.punkapi.com/v2/beers?abv_lt=7.5&page=' + Math.floor(Math.random()*3+1) + '&per_page=80')
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    const i = Math.floor(Math.random()*data.length)
+                    const name = data[i].name
+                    const tagline = data[i].tagline
+                    const description = data[i].description
+                    const {volume} = data[i]
+                    const volumeValue = volume.value
+                    const volumeUnit = volume.unit
+                    const abv = data[i].abv
+                    console.log(data[i])
+                })
+        }
+    } else {
+        function getData(e) {
+            e.preventDefault()
 
-                // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
-                // descriptionDisplay.innerHTML = description;
+            fetch('https://api.punkapi.com/v2/beers?abv_gt=7.49&page=' + Math.floor(Math.random()*2+1) + '&per_page=80')
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    const i = Math.floor(Math.random()*data.length)
+                    const name = data[i].name
+                    const tagline = data[i].tagline
+                    const description = data[i].description
+                    const {volume} = data[i]
+                    const volumeValue = volume.value
+                    const volumeUnit = volume.unit
+                    const abv = data[i].abv
+                    console.log(data[i])
 
-                printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abvValue);
-            })
+                    randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
+                    descriptionDisplay.innerHTML = description;
+
+                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
+                })
+            }
     }
 
     startBtn.addEventListener('click', getData);
-
     
 })
 
