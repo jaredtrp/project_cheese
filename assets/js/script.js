@@ -27,47 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
         function getData(e) {
             e.preventDefault()
 
-            fetch('https://api.punkapi.com/v2/beers?abv_lt=7.5&page=' + Math.floor(Math.random()*3+1) + '&per_page=80')
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    const i = Math.floor(Math.random()*data.length)
-                    const name = data[i].name
-                    const tagline = data[i].tagline
-                    const description = data[i].description
-                    const {volume} = data[i]
-                    const volumeValue = volume.value
-                    const volumeUnit = volume.unit
-                    const abv = data[i].abv
-                    console.log(data[i])
-                })
-        }
-    } else {
-        function getData(e) {
-            e.preventDefault()
+        fetch('https://api.punkapi.com/v2/beers/random')
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                const name = data[0].name
+                const tagline = "Style: " + data[0].tagline
+                const description = "Info: " + data[0].description
+                const {volume} = data[0]
+                const volumeValue = "vol: " + volume.value
+                const volumeUnit = " " + volume.unit
+                const abvValue = "ABV: " +  data[0].abv;
 
-            fetch('https://api.punkapi.com/v2/beers?abv_gt=7.49&page=' + Math.floor(Math.random()*2+1) + '&per_page=80')
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    const i = Math.floor(Math.random()*data.length)
-                    const name = data[i].name
-                    const tagline = data[i].tagline
-                    const description = data[i].description
-                    const {volume} = data[i]
-                    const volumeValue = volume.value
-                    const volumeUnit = volume.unit
-                    const abv = data[i].abv
-                    console.log(data[i])
+                // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
+                // descriptionDisplay.innerHTML = description;
 
-                    randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
-                    descriptionDisplay.innerHTML = description;
-
-                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
-                })
-            }
+                printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abvValue);
+            })
     }
 
     startBtn.addEventListener('click', getData);
@@ -96,36 +74,36 @@ var getBeer = function(beer) {
         })
 }
 
-// const cheeses = [
-//     {
-//         name: "Havarti",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark" 
-//     },
-//     {
-//         name: "Cheddar",
-//         img: "src=./assets/images/Havarti-hero_grande.jpg",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     },
-//     {
-//         name: "Goat",
-//         img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
-//         smell: "Foot, Fart, Dead Animal",
-//         type: "Semi-soft", 
-//         taste: "Butter, Magic, Unicorn Milk",
-//         origin: "Denmark"
-//     }
-// ];
+const beerses = [
+    {
+        name: "Havarti",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark" 
+    },
+    {
+        name: "Cheddar",
+        img: "src=./assets/images/Havarti-hero_grande.jpg",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark"
+    },
+    {
+        name: "Goat",
+        img: "<img src=./assets/images/Havarti-hero_grande.jpg>",
+        smell: "Foot, Fart, Dead Animal",
+        type: "Semi-soft", 
+        taste: "Butter, Magic, Unicorn Milk",
+        origin: "Denmark"
+    }
+];
 
 
 //print the cards of cheese on the page at open
-var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit) {
+var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit, abvValue) {
     
         var taskdiv = $("<div>")
             .attr('id', "taskdiv-")
@@ -145,6 +123,10 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         var beerTagline = $("<h3>")
             .addClass("beer-tagline transparent columns")
             .text(tagline)
+            
+        var ABVPrint = $("<h3>")
+        .addClass("ABV-Value transparent columns")
+        .text(abvValue)
 
         var beerInfo = $("<p>")
             .addClass("beer-info transparent columns")
@@ -168,6 +150,7 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         // taskdiv.append(image);
         taskdiv.append(beerName);
         taskdiv.append(beerTagline);
+        taskdiv.append(ABVPrint);
         taskdiv.append(beerInfo);
         taskdiv.append(beerVol);
         taskdiv.append(cutBtn); 
@@ -235,7 +218,7 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedHistory);
+        savedBeer = JSON.parse(savedBeer);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
@@ -246,7 +229,7 @@ var fillMyBeer = function () {
                 .text(savedBeer[i])
                 .attr('id', 'beerHistoryBtn' + i)
                 .addClass('button');
-                taskdiv.appen(beerHistoryBtns);
+                $(".beer-card-container").prepend(beerHistoryBtns);
         }
 
 
