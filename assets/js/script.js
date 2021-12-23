@@ -23,7 +23,7 @@ let getRequestedWeather = function (){
 // this event listener forces the js within it to wait until all DOM elements are loaded before enabling any functionality
 document.addEventListener('DOMContentLoaded', () => {
 
-    const BeerBtn = document.querySelector('#beer-btn-container');
+    const beerBtn = document.querySelector('#beer-btn-container');
 
     /* check to see the temperature and if the temp is above 65 degrees return a random
     beer of 7.5% abv or greater otherwise return a random beer of 7.4% abv or lower */
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const abv = data[i].abv
                     console.log(data[i])
 
-                    randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
-                    descriptionDisplay.innerHTML = description;
+                    // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
+                    // descriptionDisplay.innerHTML = description;
 
                     printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
                 })
@@ -79,29 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // on click of "random" button, return a beer based on the temp
-    BeerBtn.addEventListener('click', getData);
+    beerBtn.addEventListener('click', getData);
     
 })
-
-var container = $("#beer-card");
-
-const beerses = [];
-
 
 //print the cards of beer on the page at open
 var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit, abvValue) {
         
-    // var image = $('<img />', {
-    //     id: "image-", 
-    //     class: "card-image",
-    //     src: href="https://images.punkapi.com/v2/keg.png"
-    // }) 
-
-    var taskdiv = $("<div>")
-        .saveBtn
-    // var taskdiv = $("<div>")
-    //     .attr('id', "taskdiv-")
-    //     .addClass("taskdiv row");
+    var taskDiv = $("<div>")
+        .attr("id", "taskDiv-")
+        .addClass("card");
 
     var beerName = $("<h3>")
         .addClass("cheese-name columns")
@@ -110,10 +97,14 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     var beerTagline = $("<h4>")
         .addClass("beer-tagline columns")
         .text(tagline)
-        
+
+    var beerVolume = $("<h4>")
+        .addClass("beer-volume columns")
+        .text(volume)
+
     var ABVPrint = $("<h4>")
         .addClass("ABV-Value columns")
-        .text(abvValue)
+        .text("ABV: " + abvValue)
 
     var beerInfo = $("<p>")
         .addClass("beer-info columns")
@@ -127,20 +118,21 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
         .addClass("button saveBtn")
         .text('SAVE')
         .click(function () {
-           holdMyBeer();
+            beerses.push(taskDiv);
+            console.log(taskDiv);
+            holdMyBeer(beerses);
         });
         
-    container.prepend(taskdiv);
-    // taskdiv.append(image);
-    taskdiv.append(beerName);
-    taskdiv.append(beerTagline);
-    taskdiv.append(ABVPrint);
-    taskdiv.append(beerInfo);
-    taskdiv.append(beerVol);
-    taskdiv.append(saveBtn); 
+    container.prepend(taskDiv);
+    taskDiv.append(beerName);
+    taskDiv.append(beerTagline);
+    taskDiv.append(ABVPrint);
+    taskDiv.append(beerInfo);
+    taskDiv.append(beerVol);
+    taskDiv.append(saveBtn); 
 };                  
 
-var holdMyBeer = function () {
+var holdMyBeer = function (beerses) {
     // console.log("saved");
     localStorage.setItem('in-stock', JSON.stringify(beerses));
 };
@@ -152,7 +144,7 @@ var fillMyBeer = function () {
             return false;
         }
 
-        savedBeer = JSON.parse(savedBeer);
+        // savedBeer = JSON.parse(beerses);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);

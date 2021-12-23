@@ -84,13 +84,17 @@ header a {
     flex-direction: column;
 }
 
-.taskdiv {
+.card {
     width: 600px;
     margin: 50px;
     padding: 20px;
     border-radius: 3px;
     background-color: #F5BD4A;
-    
+}
+
+.cheese-name {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .beer-btn {
