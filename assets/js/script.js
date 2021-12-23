@@ -100,58 +100,7 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     taskdiv.append(beerInfo);
     taskdiv.append(beerVol);
     taskdiv.append(saveBtn); 
-};      
-            
-
-// print large cards on btn click
-// var beerCard = function(event) {
-//     console.log(event);
-//     var taskdivBig = $('<div>')
-//         .addClass("taskdivBig")
-//         container.prepend(taskdivBig);
-
-//         var imageBig = $('<img />', {
-//             id: "imageBig", 
-//             class: "card-imageBig",
-//             src: href="https://images.punkapi.com/v2/keg.png"
-            
-//         })   
-        
-//         var wineMeBtn = $("<button/>")
-//             .addClass("wineBtn")
-//             .text('WINE ME, BBY!')
-//             .click(function () {
-//                 console.log("wine is fine")
-//             })
-
-//         var detailsSection = $("<section>")
-//             .addClass("detailsSection")
-
-//         var beerName = $("<h2>")
-//             .addClass("beerName")
-//             .text("Deschute's Porter")
-        
-//         var originText = $("<p>")
-//             .addClass("originText")
-//             .text("Origin: " + "Denmark")
-
-//         var noseText = $("<p>")
-//             .addClass("noseText")
-//             .text("Nose: " + "Foot, Fart, Dead Animal")
-
-//         var tasteText = $("<p>")
-//             .addClass("tasteText")
-//             .text("Taste: " + "Butter, Magic, Unicorn Milk")
-
-//         var grateItBtn = $("<button/>")
-//             .addClass("grateBtn")
-//             .text("GRATE IT")
-//             .click(function() {
-//                 container.append(taskdivBig);
-//             })
-
-//         taskdivBig.append(imageBig, wineMeBtn, detailsSection, beerName, originText, noseText, tasteText, grateItBtn);
-// };
+};                  
 
 var holdMyBeer = function () {
     // console.log("saved");
@@ -183,58 +132,3 @@ var fillMyBeer = function () {
 }
 
 fillMyBeer();
-
-// call the printcheesecards function
-// printBeerCards();
-
-
-// var saveHistory = function () {
-//     localStorage.setItem("city-history", JSON.stringify(cityHistoryBtnsArr));
-//   }
-  
-//   var loadHistory = function () {
-//     var savedHistory = localStorage.getItem("city-history");
-  
-//     if(!savedHistory) {
-//       return false;
-//     }
-  
-//     console.log("Found Saved History!");
-  
-//     savedHistory = JSON.parse(savedHistory);
-  
-//     for(var i = 0; i < savedHistory.length; i++) {
-//       cityHistoryBtnsArr[i] = (savedHistory[i]);
-//     }
-  
-//     for (var i = 0; i < cityHistoryBtnsArr.length; i++) {
-//       var cityHistoryBtns = $('<button></button>')
-//         .text(cityHistoryBtnsArr[i])
-//         .attr("id", 'city-history-btn' + i)
-//         .addClass("city-history-btns btn btn-secondary col-9 p-2") 
-//         cityHistory.append(cityHistoryBtns);
-//     }
-//   }
-  
-//   $("#search-btn").on("click", function() {
-//     $(".card-container").remove();
-//     getLocation(cityInput);
-//   });
-  
-//   $("#city-history").on("click", function(event) {
-//     $(".city-history-btns").remove();
-//     var value = event.target.innerText.trim();
-//     $('.search-bar').val(value);
-//     var containerChildren = forecastCardsSection.children();
-//     containerChildren.remove();
-//     getLocation(cityInput);
-//   });
-  
-//   $("#clear-btn").click(function() {
-//     cityHistoryBtnsArr = [];
-//     saveHistory();
-//     populateCityHistory();
-//   });
-    
-  
-//   loadHistory();
