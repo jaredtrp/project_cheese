@@ -74,53 +74,32 @@ header a {
     color: rgb(255, 255, 255);
     width: 600px;
     height: 340px;
-    text-shadow: 0 0 10px rgb(0, 0, 0);;
-}
-
-.search-bar {
-    border: 1px solid black;
-    display : block;
-    font-size: 18px;
-    width: 500px;
-    margin-bottom: 15px;
-    background-color: rgb(255, 255, 255);
 }
 
 
 /* Main Start */
-.main-area {
-    /* display: flex; */
+.main {
+    display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.logo {
-    width: 100%;
-    max-width: 450px;
-}
-
 .taskdiv {
+    width: 600px;
+    margin: 50px;
     padding: 20px;
     border-radius: 3px;
     background-color: #F5BD4A;
+    
 }
 
-.card-image {
-    height: 50px;
-    width: 50px;
-}
-
-.card-imageBig {
-    height: 50px;
-    width: 50px;
-}
-
-.button {
-    background-color: #BA803A;
-    color: #ffffff;
+.beer-btn {
+    background-color: #a57446;
     border-radius: 5px;
-}
-
-.transparent {
-    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    font-weight: bold;
+    padding: 10px;
+    text-shadow: black;
+    box-shadow: 0 0 15px rgb(0, 0, 0);
 }
