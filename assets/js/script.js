@@ -70,10 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const abv = data[i].abv
                     console.log(data[i])
 
-                    // randomBeer.innerHTML = name + ' ' + volumeValue + volumeUnit;
-                    // descriptionDisplay.innerHTML = description;
-
-                    printBeerCards(name, tagline, description, volume, volumeValue, volumeUnit, abv);
+                    printBeerCards(name, tagline, description, volumeValue, volumeUnit, abv);
                 })
             }
     }
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //print the cards of beer on the page at open
-var printBeerCards = function(name, tagline, description, volume, volumeValue, volumeUnit, abvValue) {
+var printBeerCards = function(name, tagline, description, volumeValue, volumeUnit, abvValue) {
         
     var taskDiv = $("<div>")
         .attr("id", "taskDiv-")
@@ -97,10 +94,6 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     var beerTagline = $("<h4>")
         .addClass("beer-tagline columns")
         .text(tagline)
-
-    var beerVolume = $("<h4>")
-        .addClass("beer-volume columns")
-        .text(volume)
 
     var ABVPrint = $("<h4>")
         .addClass("ABV-Value columns")
@@ -116,13 +109,24 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     
     var saveBtn = $("<button/>")
         .addClass("button saveBtn")
-        .text('SAVE')
+        .text('HOLD MY BEER')
         .click(function () {
-            beerses.push(taskDiv);
-            console.log(taskDiv);
+            var cardArr = [];
+            cardArr.push(name, tagline, abvValue);
+            
+            beerses.push(cardArr);
+            
             holdMyBeer(beerses);
         });
-        
+
+    var deleteBtn = $("<button/>")
+        .addClass("button alert")
+        .attr("id", "delete-btn")
+        .text("POUR OUT")
+        .click(function () {
+            $("#taskDiv-").remove();
+        })
+
     container.prepend(taskDiv);
     taskDiv.append(beerName);
     taskDiv.append(beerTagline);
@@ -130,6 +134,7 @@ var printBeerCards = function(name, tagline, description, volume, volumeValue, v
     taskDiv.append(beerInfo);
     taskDiv.append(beerVol);
     taskDiv.append(saveBtn); 
+    taskDiv.append(deleteBtn);
 };                  
 
 var holdMyBeer = function (beerses) {
@@ -144,21 +149,38 @@ var fillMyBeer = function () {
             return false;
         }
 
-        // savedBeer = JSON.parse(beerses);
+        savedBeer = JSON.parse(savedBeer);
+        console.log(savedBeer);
 
         for (var i = 0; i < savedBeer.length; i++) {
             beerses[i] = (savedBeer[i]);
         }
 
         for (var i = 0; i < savedBeer.length; i++) {
-            beerHistoryBtns = $('<button></button>')
-                .text(savedBeer[i])
-                .attr('id', 'beerHistoryBtn' + i)
-                .addClass('button');
-                $("#beer-card").prepend(beerHistoryBtns);
+            // beerHistoryBtns = $('<button></button>')
+            //     .text(savedBeer[i] + " ")
+            //     .attr('id', 'beerHistoryBtn' + i)
+            //     .addClass('button beerhistoryBtn');
+            //     $("#beer-card").prepend(beerHistoryBtns);
+            var savedBeerName = savedBeer[i][0];
+
+            fetch('https://api.punkapi.com/v2/beers?beer_name=' + savedBeerName)
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                const name = data[0].name
+                const tagline = data[0].tagline
+                const description = data[0].description
+                const {volume} = data[0]
+                const volumeValue = volume.value
+                const volumeUnit = volume.unit
+                const abv = data[0].abv
+                console.log(data[0])
+
+                printBeerCards(name, tagline, description, volumeValue, volumeUnit, abv);
+            })
         }
-
-
-}
+    }
 
 fillMyBeer();
