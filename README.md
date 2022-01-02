@@ -2,13 +2,7 @@
 # Core functionality:
 Discovery is one of the most tantalizing and rewarding aspects of exploring the vast world of beer, but we humans have an almost inevitable tendency to fall into patterns. With this shortcoming in mind, we developed this app to offer a random beer from BrewDog Brewery, but with the added feature of basing this output on the weather in the Austin, Texas area.
 
-<<<<<<< HEAD
 For any day where the weather is below 65 degrees fahrenheit, beers above 7.5 ABV are randomly recommended for their tendency to provide warmth. On those days where the temperature is warmer, a lower ABV beer in recommended.
-=======
-For any day where the weather is below 65 degrees fahrenheit, beers above 7.5 ABV are randomly recommended for their tendency to provide warmth.
-
-## As a beer enthusiast, I want to learn about beer so that I can maximize the experience. 
->>>>>>> 58a8810a3699a44e6609389a66b767902917c89d
 
 ## When a user loads the site they see:
 - Beer-themed design
@@ -17,7 +11,6 @@ For any day where the weather is below 65 degrees fahrenheit, beers above 7.5 AB
 - "Beer Me" section
 
 ## Features and Design
-<<<<<<< HEAD
 - Colorful and dynamic beer-themed design
 - Clickable logo returns/reloads page
 - Logo text responds to screen size
@@ -32,15 +25,6 @@ For any day where the weather is below 65 degrees fahrenheit, beers above 7.5 AB
     - "Hold my beer" button to save the beer into local storage
     - "Pour out" button to remove the beer from local storage (WIP: Currently only deletes the card from the DOM, does not delete from local storage)
 - Random beer is selected based on multiple criteria pulled from the PunkAPI and OpenWeather API.
-=======
-- Logo clickable return to main screen
-- 
-- Beer cards clickable
-    - Cut it - expands the beer card
-    - Once expanded
-     - Grate it - collapses card - keeps card in array
-     - Wine button shows pairing
->>>>>>> 58a8810a3699a44e6609389a66b767902917c89d
 
 ## Languages, Code, APIs, and Frameworks Used
 ### HTML
@@ -63,10 +47,6 @@ For any day where the weather is below 65 degrees fahrenheit, beers above 7.5 AB
 ### Foundation
 - Framework utilized to provide responsive design and styling.
 ### JQuery
-<<<<<<< HEAD
 - JavaScript library used to provide an easier coding route for dynamically generating our random beer content.
 
-=======
-- Lorem
 <img src="assets\images\project_cheese website picture.png" alt="Image of the brewhaus website">
->>>>>>> 58a8810a3699a44e6609389a66b767902917c89d
